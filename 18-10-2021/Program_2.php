@@ -2,13 +2,13 @@
 <!-- WAP to convert total number of seconds into hours, minutes, and seconds. -->
 <?php
 
-$s = 5000;
+$second = 7000;
 
-$sec = $s % 60;
-$hrs = $s / 60;
-$mins = $hrs % 60;
-$hrs = $hrs / 60;
+$sec = $second % 60;
+$hour = $second / 60;
+$mins = $hour % 60;
+$hour = $hour / 60;
 
-print ("HH:MM:SS-> " . (int)$hrs . ":" . (int)$mins . ":" . (int)$sec);
+print ("HH:MM:SS-> " . (int)$hour . ":" . (int)$mins . ":" . (int)$sec);
 
 ?>
