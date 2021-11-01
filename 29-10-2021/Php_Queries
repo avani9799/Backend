@@ -1,0 +1,262 @@
+1) DISPLAY THE DEPT INFORMATION FROM DEPARTMENT TABLE.
+
+Ans:- Select * from `department`;
+
+2) DISPLAY THE DETAILS OF ALL EMPLOYEES.
+
+Ans:- select * from `employee`;
+
+3) DISPLAY THE NAME AND JOB FOR ALL EMPLOYEES.
+
+Ans:- select emp_name,emp_designation from `employee`;
+
+4) DISPLAY NAME AND SALARY FOR ALL EMPLOYEES
+
+Ans:- select emp_name,emp_salary from `employee`;
+
+5) DISPLAY EMPLOYEE NUMBER AND TOTAL SALARY FOR EACH EMPLOYEE
+
+Ans:- select emp_id,emp_name,emp_salary,salary_deduction,(emp_salary-salary_deduction) as "total_salary" from `employee`
+
+6) DISPLAY EMPLOYEE NAME AND ANNUAL SALARY FOR ALL EMPLOYEES.
+
+Ans:- select emp_name,(emp_salary*12) as "Annual_salary" from `employee`;
+
+7) DISPLAY THE NAMES OF ALL EMPLOYEES WHO ARE WORKING IN DEPARTMENT
+NUMBER 5
+
+Ans:- select emp_name from `department` where department_id=5
+
+8) DISPLAY THE NAMES OF ALL EMPLOYEES WORKING AS CLERKS AND DRAWING
+A SALARYMORE THAN 3000.
+
+Ans :- select emp_name from `employee` where emp_designation='clerk' AND emp_salary>3000 
+
+9) DISPLAY EMPLOYEE NUMBER AND NAMES FOR EMPLOYEES WHO EARN
+COMMISSION.
+
+Ans:- select emp_name from `employee` where emp_commission>0
+
+10) DISPLAY NAMES OF EMPLOYEES WHO DO NOT EARN ANY COMMISSION
+
+Ans:- select emp_name from `employee` where emp_commission=0
+
+11) DISPLAY THE NAMES OF EMPLOYEES WHO ARE WORKING AS CLERK,
+SALESMAN OR ANALYST AND DRAWING A SALARY MORE THAN 3000
+
+Ans:- select emp_name from `employee` where emp_designation='clerk' OR emp_designation='Analyst' OR emp_designation='Sales Manager' And emp_salary>3000
+
+12) DISPLAY THE NAMES OF EMPLOYEES WHO ARE WORKING IN THE COMPANY FOR THE PAST 5 YEARS.
+
+Ans:- select emp_name from `employee` where emp_experience>=5
+
+13) DISPLAY THE LIST OF EMPLOYEES WHO HAVE JOINED THE COMPANY BEFORE
+30 TH JUNE 90 OR AFTER 31 ST DEC 90
+
+Ans:- select emp_name from `employee` where emp_joindate<'1990-06-30' or emp_joindate>'1990-12-31';
+
+14) DISPLAY CURRENT DATE
+
+Ans:- select CURRENT_DATE
+
+
+15) DISPLAY THE LIST OF USERS IN YOUR DATABASE (USING LOG TABLE)
+
+Ans:- 
+
+16) DISPLAY THE NAMES OF ALL TABLES FROM THE CURRENT USER
+
+Ans:- 
+
+17)DISPLAY THE NAME OF THE CURRENT USER.
+
+Ans:- SELECT CURRENT_USER
+
+18) DISPLAY THE NAMES OF EMPLOYEES WORKING IN DEPARTMENT NUMBER 10
+OR 20 OR 40 OR EMPLOYEES WORKING AS CLERKS, SALESMAN OR ANALYST.
+
+Ans:- select emp_name from `employee` where emp_departmentid in (10,20,40) or emp_designation in ('clerk','Sales Manager','Analyst')
+
+19)DISPLAY THE NAMES OF EMPLOYEES WHOSE NAME STARTS WITH ALPHABEt S.
+
+Ans:- select emp_name from `employee` where emp_name LIKE 'S%'
+
+20) DISPLAY EMPLOYEE NAMES FOR EMPLOYEES WHOSE NAME ENDS WITH ALPHABET.
+
+Ans:- select emp_name from `employee` where emp_name LIKE '%S'
+
+21) DISPLAY THE NAMES OF EMPLOYEES WHOSE NAMES HAVE SECOND
+ALPHABET A IN THEIR NAMES.
+
+Ans:- select emp_name from `employee` where emp_name LIKE '_A%'
+
+22) DISPLAY THE NAMES OF EMPLOYEES WHOSE NAME IS EXACTLY FIVE
+CHARACTERS IN LENGTH
+
+Ans:- select emp_name from `employee` where length(emp_name)=5
+
+
+23)DISPLAY THE NAMES OF EMPLOYEES WHO ARE NOT WORKING AS MANAGERS
+
+Ans:- select emp_name from `employee` WHERE emp_designation NOT IN ('Manager')
+
+24) DISPLAY THE NAMES OF EMPLOYEES WHO ARE NOT WORKING AS SALESMAN
+OR CLERK OR ANALYST
+
+Ans:- select emp_name from `employee` WHERE emp_designation NOT IN ('Manager','Sales Manager','Analyst')
+
+25) DISPLAY ALL ROWS FROM EMP TABLE. THE SYSTEM SHOULD WAIT AFTER
+EVERY SCREEN FULL OF INFORMATION
+
+Ans:- 
+
+
+26)DISPLAY THE TOTAL NUMBER OF EMPLOYEES WORKING IN THE COMPANY
+
+Ans:- select COUNT(*) from `employee`
+
+27) DISPLAY THE TOTAL SALARY BEING PAID TO ALL EMPLOYEES
+
+Ans:- select SUM(emp_salary) from `employee`
+
+28) DISPLAY THE MAXIMUM SALARY FROM EMP TABLE
+
+Ans:- select MAX(emp_salary) from `employee`
+
+29) DISPLAY THE MINIMUM SALARY FROM EMP TABLE
+
+Ans:- select MIN(emp_salary) from `employee`
+
+30) DISPLAY THE AVERAGE SALARY FROM EMP TABLE
+
+Ans:- select AVG(emp_salary) from `employee`
+
+31) DISPLAY THE MAXIMUM SALARY BEING PAID TO CLERK
+
+Ans:- select MAX(emp_salary) from `employee` where emp_designation='clerk'
+
+32) DISPLAY THE MAXIMUM SALARY BEING PAID IN DEPT NO 20
+
+Ans:- select MAX(emp_salary) from `employee` where emp_departmentid=20
+
+33) DISPLAY THE MIN SAL BEING PAID TO ANY SALESMAN
+
+Ans:- select MIN(emp_salary) from `employee` where emp_designation='Sales Manager'
+
+34) DISPLAY THE AVERAGE SALARY DRAWN BY MANAGERS
+
+Ans:- select AVG(emp_salary) from `employee` where emp_designation='Manager'
+
+35) DISPLAY THE TOTAL SALARY DRAWN BY ANALYST WORKING IN DEPT NO 40
+
+Ans:- select SUM(emp_salary) from `employee` where emp_designation='Analyst' AND emp_departmentid=40
+
+36) DISPLAY THE NAMES OF EMPLOYEES IN ORDER OF SALARY I.E. THE NAME OF
+THE EMPLOYEE EARNING LOWEST SALARY SHOULD APPEAR FIRST
+
+Ans:- select emp_name from `employee` ORDER BY emp_salary
+
+37) DISPLAY THE NAMES OF EMPLOYEES IN DESCENDING ORDER OF SALARY
+
+Ans:-select emp_name from `employee` ORDER BY emp_salary DESC
+
+38) DISPLAY THE DETAILS FROM EMP TABLE IN ORDER OF EMP NAME
+
+Ans:- select emp_name from `employee` ORDER BY emp_name
+
+39) DISPLAY EMPNO, ENAME, DEPTNO, AND SAL. SORT THE OUTPUT FIRST BASED
+ON NAMEAND WITHIN NAME BY DEPTNO AND WITHIN DEPTNO BY SAL
+
+Ans:- select emp_id,emp_name,emp_departmentid,emp_salary from `employee` ORDER BY emp_name,emp_departmentid,emp_salary
+
+40) DISPLAY THE NAME OF THE EMPLOYEE ALONG WITH THEIR ANNUAL SALARY
+(SAL * 12).THE NAME OF THE EMPLOYEE EARNING HIGHEST ANNUAL SALARY
+SHOULD APPEAR FIRST
+
+Ans:- select emp_name,emp_salary*12 from `employee` ORDER BY emp_salary DESC
+
+41) DISPLAY NAME, SAL, HRA, PF, DA, TOTAL SAL FOR EACH EMPLOYEE. THE
+OUTPUT SHOULD BE IN THE ORDER OF TOTAL SAL, HRA 15% OF SAL, DA 10%
+OF SAL, PF 5% OF SAL TOTAL SALARY WILL BE (SAL*HRA*DA)-PF
+
+Ans:-select emp_name, emp_salary, emp_salary/100*15 as hra, emp_salary/100*5 as pf, emp_salary/100*10 as da, emp_salary+emp_salary/100*15+emp_salary/100*10-emp_salary/100*5 as total from `employee`;
+
+42) DISPLAY DEPT NUMBERS AND TOTAL NUMBER OF EMPLOYEES WITHIN EACH GROUP
+
+Ans:- 
+
+
+==>43) DISPLAY THE VARIOUS JOBS AND TOTAL NUMBER OF EMPLOYEES WITH EACH JOB GROUP
+
+Ans:- select emp_designation, count(emp_designation) from `employee` group by emp_designation;
+
+44)DISPLAY DEPARTMENT NUMBERS AND TOTAL SALARY FOR EACH DEPARTMENT
+
+Ans:- select emp_departmentid, SUM(emp_salary) from `employee` GROUP BY emp_departmentid;
+
+45) DISPLAY DEPARTMENT NUMBERS AND MAXIMUM SALARY FOR EACH
+DEPARTMENT
+
+Ans:-  select emp_departmentid, max(emp_salary) from `employee` group by emp_departmentid;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
