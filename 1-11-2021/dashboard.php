@@ -53,20 +53,19 @@ else{
         
     <table class="table w-50">
     <thead>
-       
         <tr>
             <div class="container text-end mt-5">
-                <a href="Login.php">LOGOUT</a>
+                <a href="Logout.php">LOGOUT</a>
             </div>
             <div class="text-center my-5"><h2>Student Details</h2></div>
+            <div class="container d-flex justify-content-start mb-4 w-50">
+                <h5>
+                    <?php
+                    echo "Hello ".$row1['stud_name'];
+                    ?>
+                </h5>
+            </div>
         </tr>
-      <tr>
-        <th>
-            <?php
-                echo "Hello ".$row1['stud_name'];
-            ?>
-        </th> 
-      </tr>
       <tr>
         <th scope="col">ID</th>
         <th scope="col">NAME</th>

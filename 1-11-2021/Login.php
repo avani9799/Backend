@@ -29,6 +29,9 @@
             color: #fff;
             font-weight:bold;
         }
+        a{
+            text-decoration:none;
+        }
 
     </style>
     <title>Login </title>
@@ -45,10 +48,14 @@
 
             <div class="form-group  mt-3">
                 <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter Password" required>
+                <a href="#">Forget Password?</a>
             </div>
-            
+
         </div>
         <button type="submit" class="btn btn-primary mt-5" name="submit" >Submit</button>
+        <div class="d-flex justify-content-center mt-3">
+            <h6>Don't have account? <span> <a href="SignUp.php">Sign Up</a> </span> </h6>
+        </div>
     </form>
 
     </form>

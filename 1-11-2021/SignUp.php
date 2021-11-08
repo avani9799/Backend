@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +31,9 @@
             color: #fff;
             font-weight:bold;
         }
+        a{
+            text-decoration:none;
+        }
        
     </style>
 </head>
@@ -49,12 +53,19 @@
             <div class="form-group  mt-3">
                 <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter Password" required>
             </div>
+
+            <div class="form-group  mt-3">
+                <input type="password" class="form-control" name="cpwd" id="cpwd" placeholder="Enter Confirm Password" required>
+            </div>
             
             <div class="form-group  mt-3 ">
                 <input type="text" class="form-control" name="mobno" id="mobno" placeholder="Enter Contact No" required>
             </div>
-        </div>
-        <button type="submit" class="btn btn-primary mt-5" name="submit" >Submit</button>
+            <button type="submit" class="btn btn-primary mt-5" name="submit" >Submit</button>
+            <div class="d-flex justify-content-center mt-3">
+                <h6>Already have an account? <span> <a href="Login.php">Sign In</a> </span> </h6>
+            </div>
+        </div> 
     </form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -67,24 +78,30 @@
 
     include 'connection.php';
 
-    if(isset($_POST['submit'])){
-        $name=$_POST['name'];
-        $email=$_POST['email'];
-        $password=$_POST['pwd'];
-        $mobileno=$_POST['mobno'];
-
-        $insert_query="Insert into student(stud_name,stud_email,stud_password,stud_mobno) values 
-        ('$name','$email','$password','$mobileno')";
-
-        $res=mysqli_query($con,$insert_query);
-
-        if($res){
-            echo "data inserted";
-        }else{
+    if($_POST['pwd']==$_POST['cpwd']){
+        if(isset($_POST['submit'])){
+            $name=$_POST['name'];
+            $email=$_POST['email'];
+            $password=$_POST['pwd'];
+            $cpassword=$_POST['cpwd'];
+            $mobileno=$_POST['mobno'];
+            
+            $insert_query="Insert into student(stud_name,stud_email,stud_password,stud_mobno) values
+            ('$name','$email','$password','$mobileno')";
+            
+            $res=mysqli_query($con,$insert_query);
+            
+            
+             if($res){
+                header("Location:Login.php");
+            }else{
             echo "data not inserted";
+            }
         }
+    }else{
+        echo '<script>alert("Password not matched")</script>';
     }
-
+    
     mysqli_close($con);
 
 

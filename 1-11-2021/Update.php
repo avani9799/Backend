@@ -14,7 +14,7 @@ else{
     $query1=mysqli_query($con,"select stud_name from student where stud_email='$email'") or die('Error in query');
 
     $row1=mysqli_fetch_array($query1);
-    echo "Hello ".$row1['stud_name'];
+    // echo "Hello ".$row1['stud_name'];
 
     $query2=mysqli_query($con," select * from student where stud_id='$id' ") or die("Error in query");
     $row2=mysqli_fetch_array($query2);
@@ -62,10 +62,12 @@ else{
     </style>
   </head>
   <body>
+  <div class="container d-flex justify-content-start mb-4 w-50 mt-5">
+            <?php
+                echo "Hello ".$row1['stud_name'];
+            ?>
+    </div>
   <form class="w-50 mt-5" method="POST">
-      <!-- <?php
-        echo "Hello ".$row1['stud_name'];
-      ?> -->
         <h2 class="text-center">Update Details</h2>
         <div class="form-group mt-5">
             <div class="form-group mt-3">
@@ -79,6 +81,11 @@ else{
 
             <div class="form-group  mt-3">
                 <input type="password" class="form-control" name="pwd" value="<?php echo $password ?>" id="pwd" placeholder="Enter Password" required>
+            </div>
+
+
+            <div class="form-group  mt-3">
+                <input type="password" class="form-control" name="pwd" value="<?php echo $password ?>" id="pwd" placeholder="Enter Confirm Password" required>
             </div>
             
             <div class="form-group  mt-3 ">
