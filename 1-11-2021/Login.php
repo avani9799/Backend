@@ -42,13 +42,20 @@
         <div class="form-group mt-5">
             
             <div class="form-group mt-3">
-            <input type="email" class="form-control" name="email"  id="email" aria-describedby="emailHelp"
+            <input type="email" class="form-control" name="email" value="<?php if(isset($_COOKIE["email"])) { echo $_COOKIE["email"]; } ?>" id="email" aria-describedby="emailHelp"
                 placeholder="Enter email" required>
             </div>
 
             <div class="form-group  mt-3">
-                <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter Password" required>
-                <a href="#">Forget Password?</a>
+                <input type="password" class="form-control" name="pwd" value="<?php if(isset($_COOKIE["pwd"])) { echo $_COOKIE["pwd"]; } ?>" id="pwd" placeholder="Enter Password" required>
+                <!-- <a href="#">Forget Password?</a> -->
+            </div>
+
+            <div class="form-check mt-3">
+                <input class="form-check-input" type="checkbox" value="" name="remember" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Remember me
+                </label>
             </div>
 
         </div>
@@ -70,6 +77,17 @@
  include 'connection.php';
 
  if(isset($_POST['submit'])){
+
+
+    // if(!empty($_POST["remember"])) {
+    //     setcookie ("email",$_POST["email"],time()+ 3600);
+    //     setcookie ("pwd",$_POST["pwd"],time()+ 3600);
+    //     echo "Cookies Set Successfuly";
+    // } else {
+    //     setcookie("email","");
+    //     setcookie("pwd","");
+    //     echo "Cookies Not Set";
+    // }
     $email=$_POST['email'];
     $password=$_POST['pwd'];
 
@@ -89,5 +107,7 @@
         
         mysqli_close($con);
     }
+
+   
 
 ?>
