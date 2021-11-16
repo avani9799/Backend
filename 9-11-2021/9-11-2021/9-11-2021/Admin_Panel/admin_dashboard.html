@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard </title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="Bootstrap/css/bootstrap.css">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="Bootstrap/css/sidebars.css" rel="stylesheet">
+
+
+</head>
+
+<body class="bg-right">
+
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-md-10 col-11 mx-auto">
+                <nav aria-label="breadcrumb" class="mb-3">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Library</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Data</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-4 d-md-block">
+                <div class="card bg-common card-left">
+                    <main>
+                        <div class="d-flex flex-column flex-shrink-0 text-white bg-dark p-3" style="width: 280px;">
+                            <a href="/"
+                                class="d-flex align-items-center pb-3 mb-3 link-dark text-white text-decoration-none border-bottom">
+                                <svg class="bi me-2" width="16" height="16">
+                                    <use xlink:href="#speedometer2" />
+                                </svg>
+                                <span class="fs-5 fw-semibold">Dashboard</span>
+                            </a>
+                            <ul class="list-unstyled ps-0">
+                                <li class="mb-1">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#grid" />
+                                    </svg>
+                                    <button class="btn btn-toggle align-items-center text-white rounded collapsed"
+                                        data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                                        Categories
+                                    </button>
+                                    <div class="collapse show" id="home-collapse">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                            <li><a href="Add_categories.php"
+                                                    class="link-dark text-white rounded text-decoration-none">Add
+                                                    Category</a></li>
+                                            <li><a href="View_categories.php"
+                                                    class="link-dark text-white rounded text-decoration-none">View
+                                                    Category</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="mb-1">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#grid" />
+                                    </svg>
+                                    <button class="btn btn-toggle align-items-center text-white rounded collapsed"
+                                        data-bs-toggle="collapse" data-bs-target="#dashboard-collapse"
+                                        aria-expanded="false">
+                                        Products
+                                    </button>
+                                    <div class="collapse" id="dashboard-collapse">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                            <li><a href="Add_product.php"
+                                                    class="link-dark text-white rounded text-decoration-none">Add
+                                                    Products</a></li>
+                                            <li><a href="View_products.php"
+                                                    class="link-dark text-white rounded text-decoration-none">View
+                                                    Products</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="mb-1">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#table" />
+                                    </svg>
+                                    <button class="btn btn-toggle align-items-center text-white rounded collapsed"
+                                        data-bs-toggle="collapse" data-bs-target="#orders-collapse"
+                                        aria-expanded="false">
+                                        Orders
+                                    </button>
+                                    <div class="collapse" id="orders-collapse">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                            <li><a href="#"
+                                                    class="link-dark text-white text-decoration-none rounded">New</a>
+                                            </li>
+                                            <li><a href="#"
+                                                    class="link-dark text-white rounded text-decoration-none">Processed</a>
+                                            </li>
+                                            <li><a href="#"
+                                                    class="link-dark text-white rounded text-decoration-none">Shipped</a>
+                                            </li>
+                                            <li><a href="#"
+                                                    class="link-dark text-white rounded text-decoration-none">Returned</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+
+
+                        <div class="b-example-divider"></div>
+                    </main>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src=" Bootstrap/js/jquery.js"></script>
+    <script src="Bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="sidebars.js"></script>
+</body>
+
+</html>
