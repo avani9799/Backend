@@ -91,7 +91,7 @@ else{
             <div class="form-group mt-3">
                 <label for="formFile" class="form-label">Add Product Image</label>
                 <input class="form-control" type="file" name="file" id="formFile">
-                <img src="images/<?php echo $img ?>" style="width:100px;height:50px" alt="">
+                <img src="<?php echo $img ?>" style="width:100px;height:100px" alt="">
 
             </div>
 
@@ -127,17 +127,22 @@ if(isset($_POST['update'])){
     $price=$_POST['price'];
     $desc=$_POST['desc'];
     $cname=$_POST['categories'];
-    $status=$_POST['status'];
-    $img=$_FILES['file'];   
-    $img_loc=$_FILES['file']['tmp_name'];
-    $filename=$_FILES['file']['name'];
-    $img_des="images/".$filename;
+    $status=$_POST['status'];  
+    // $filepath = "images/" . $_FILES["file"]["name"];
+    // $img_des="images/".$filename;
     
+
+    if($_FILES["file"]["size"]==0){
+        $filepath=$img;
+    }else{
+        $filepath = "images/" . $_FILES["file"]["name"];
+    }
+
     include 'connection.php';
-    move_uploaded_file($img_loc, "images/".$filename);
+    move_uploaded_file($_FILES["file"]["tmp_name"], $filepath);
 
 
-    $sql="update product_detail set p_image='$img_des',p_name='$name',p_price='$price',p_description='$desc',
+    $sql="update product_detail set p_image='$filepath',p_name='$name',p_price='$price',p_description='$desc',
     c_name='$cname',is_active='$status' where p_id=$id";
 
     $query=mysqli_query($con,$sql) or die("Error in Query");

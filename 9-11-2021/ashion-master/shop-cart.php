@@ -1,3 +1,31 @@
+<?php
+
+
+include '../Admin_Panel/connection.php';
+$pro_id=$_GET['pid'];
+
+$sql="select * from product_detail where p_id='$pro_id'" or die("error in query");
+
+$query=mysqli_query($con,$sql);
+
+while($row=mysqli_fetch_array($query))
+{
+$p_name=$row['p_name'];
+$p_price=$row['p_price'];
+$p_image=$row['p_image'];
+}
+
+$query="insert into cart(pro_id,pro_name,pro_price,pro_image) values('$pro_id','$p_name','$p_price','$p_image')" or die("error in query");
+if(mysqli_query($con,$query))
+{
+//echo "done";
+}
+else
+{
+//echo "failed";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -45,7 +73,7 @@
             </a></li>
         </ul>
         <div class="offcanvas__logo">
-            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+            <a href="./index.php"><img src="img/logo.png" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
@@ -56,25 +84,23 @@
     <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
-    <header class="header">
+    <header class="header"> 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-3 col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="./index.php"><img src="img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="#">Women’s</a></li>
-                            <li><a href="#">Men’s</a></li>
-                            <li><a href="./shop.html">Shop</a></li>
+                            <li class="active"><a href="./index.php">Home</a></li>
+                            <li><a href="./shop.php">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="./product-details.html">Product Details</a></li>
-                                    <li><a href="./shop-cart.html">Shop Cart</a></li>
+                                    <li><a href="./product-details.php">Product Details</a></li>
+                                    <li><a href="./shop-cart.php">Shop Cart</a></li>
                                     <li><a href="./checkout.html">Checkout</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
@@ -141,11 +167,19 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php
+                                    include '../Admin_Panel/connection.php';
+                        
+                                    $query=mysqli_query($con,"select * from cart");
+                                    while ($row=mysqli_fetch_array($query)) 
+                                    {       
+                                ?>
                                 <tr>
+                                
                                     <td class="cart__product__item">
-                                        <img src="img/shop-cart/cp-1.jpg" alt="">
+                                        <img src="../Admin_Panel/<?php echo htmlentities($row['pro_image']);?>" width="100" height="100" alt="">
                                         <div class="cart__product__item__title">
-                                            <h6>Chain bucket bag</h6>
+                                            <h6><?php echo $row['pro_name'];?></h6>
                                             <div class="rating">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -155,16 +189,22 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="cart__price">$ 150.0</td>
+                                    <td class="cart__price">$ <?php echo $row['pro_price'];?></td>
                                     <td class="cart__quantity">
                                         <div class="pro-qty">
                                             <input type="text" value="1">
                                         </div>
                                     </td>
                                     <td class="cart__total">$ 300.0</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
+                                    <td class="cart__close">
+                                    <div class="text-center">
+                                            <a class="text-danger" href="delete-cart-item.php?cartid=<?php echo $row['cart_id']; ?>"><span class="icon_close"></span></a>
+                                    </div>
+                                    </td>
+                                
                                 </tr>
-                                <tr>
+                                <?php } ?>
+                                <!-- <tr>
                                     <td class="cart__product__item">
                                         <img src="img/shop-cart/cp-2.jpg" alt="">
                                         <div class="cart__product__item__title">
@@ -186,8 +226,8 @@
                                     </td>
                                     <td class="cart__total">$ 170.0</td>
                                     <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
+                                </tr> -->
+                                <!-- <tr>
                                     <td class="cart__product__item">
                                         <img src="img/shop-cart/cp-3.jpg" alt="">
                                         <div class="cart__product__item__title">
@@ -209,8 +249,8 @@
                                     </td>
                                     <td class="cart__total">$ 170.0</td>
                                     <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
+                                </tr> -->
+                                <!-- <tr>
                                     <td class="cart__product__item">
                                         <img src="img/shop-cart/cp-4.jpg" alt="">
                                         <div class="cart__product__item__title">
@@ -232,7 +272,7 @@
                                     </td>
                                     <td class="cart__total">$ 110.0</td>
                                     <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -408,8 +448,8 @@
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="search-close-switch">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
+            <form class="search-model-form" action="search.php" method="get">
+                <input type="text" id="search-input" placeholder="Search here....." name="search">
             </form>
         </div>
     </div>

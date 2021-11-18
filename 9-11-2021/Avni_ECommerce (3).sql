@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 15, 2021 at 04:26 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.30
+-- Host: localhost
+-- Generation Time: Nov 17, 2021 at 02:30 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `avni_ecommerce`
+-- Database: `Avni_ECommerce`
 --
 
 -- --------------------------------------------------------
@@ -39,7 +39,35 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_password`) VALUES
-(1, 'Avni', 'avani@gmail.com', '123');
+(1, 'Avni', 'avani@gmail.com', '123'),
+(2, 'Swati', 'swati@gmail.com', '123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `cart_id` bigint(20) NOT NULL,
+  `pro_id` bigint(10) NOT NULL,
+  `pro_name` varchar(100) NOT NULL,
+  `pro_price` bigint(10) NOT NULL,
+  `pro_image` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `pro_id`, `pro_name`, `pro_price`, `pro_image`) VALUES
+(1, 4, ' Georgette A-Line Dress', 60, 'images/minidress.jpg'),
+(2, 4, ' Georgette A-Line Dress', 60, 'images/minidress.jpg'),
+(3, 4, ' Georgette A-Line Dress', 60, 'images/minidress.jpg'),
+(4, 8, 'Long Sleeve Stylish Tops', 120, 'images/westerntop.jpg'),
+(5, 8, 'Long Sleeve Stylish Tops', 120, 'images/westerntop.jpg'),
+(6, 8, 'Long Sleeve Stylish Tops', 120, 'images/westerntop.jpg'),
+(7, 8, 'Long Sleeve Stylish Tops', 120, 'images/westerntop.jpg');
 
 -- --------------------------------------------------------
 
@@ -91,7 +119,7 @@ INSERT INTO `product_detail` (`p_id`, `p_name`, `p_price`, `p_description`, `p_i
 (7, 'Denim crop dungarees', 150, '100% Cotton. Denim fabric. Cropped design. Straight design. Straight neck. Wide straps. Adjustable straps. Chest pocket. Side pockets. Cuffed hem. Contrasting seams.\r\n\r\nThe garments labelled as Committed are products that have been produced using sustainable fibres or processes, reducing their environmental impact.', 'images/dungarees.jpg', 'women', 1),
 (8, 'Long Sleeve Stylish Tops', 120, 'Light fabric. Straight design. Rounded neck. Long sleeve.\r\n\r\nThe garments labelled as Committed are products that have been produced using sustainable fibres or processes, reducing their environmental impact.', 'images/westerntop.jpg', 'women', 1),
 (10, 'Floral Girls Party Wear Dress', 50, 'A Fail Safe Embellished Party Dress For Your Cute Little Fashionista. A Shimmery Embellished Yoke Being The Highlight Of This Sleeveless One-Piece Dress, The High Neck And Fit And Flare Design Are Too Good To Miss. Style With Some Fancy Hairpins And Shoes To Finish Her Look.', 'images/kid1.jpg_1088Wx1632H', 'kids', 1),
-(11, 'Gold Plated Pearl Choker', 200, 'contains : 1 necklace + 1 pair of earring\r\ndimension : necklace pendant length - 65 cm, necklace width - 25 cm, earring length - 3 cm, earring width - 3 cm\r\nsuperior quality & skin friendly: high quality as per international standards it has been made from toxic free materials anti-allergic and safe for skin it can be worn over long time periods without any complains of ach and swelling', 'images/', 'accessories', 1),
+(11, 'Gold Plated Pearl Choker', 200, 'contains : 1 necklace + 1 pair of earring\r\ndimension : necklace pendant length - 65 cm, necklace width - 25 cm, earring length - 3 cm, earring width - 3 cm\r\nsuperior quality & skin friendly: high quality as per international standards it has been made from toxic free materials anti-allergic and safe for skin it can be worn over long time periods without any complains of ach and swelling', 'images/access1.jpg', 'accessories', 1),
 (12, 'Belt wrap dress', 89, 'Suit style. Wrap detail. Straight design. Short design. Lapel-collar V-neck collar. Long sleeve. Flap pockets. Adjustable belt. Inner lining.', 'images/Beltwrapdress.jpg', 'women', 1),
 (13, 'Yellow A-line Peplum Sleeve Dress', 90, 'Yellow solid woven A-Line dress, has a round neck, long sleeves, flared hem\r\n\r\nSize & Fit\r\nSemi-Fit\r\nThe model (height 5\'8\") is wearing a size S\r\n\r\nMaterial & Care\r\nPolyester\r\nMachine-wash', 'images/Aline.jpg', 'women', 1),
 (14, 'Solid Maxi Dress', 78, 'Maroon solid woven maxi dress, has shoulder straps, sleeveless, concealed zip closure, and flared hem\r\n\r\nSize & Fit\r\nSemi-Fit\r\nThe model (height 5\'8\") is wearing a size S\r\n\r\nMaterial & Care\r\nMaterial: Polyester\r\nMachine Wash', 'images/maxi.jpg', 'women', 1),
@@ -144,7 +172,8 @@ INSERT INTO `product_detail` (`p_id`, `p_name`, `p_price`, `p_description`, `p_i
 (61, 'Sterling Silver Geometry Drop Earrings for women', 79, 'Store the jewellery in GIVA Jewellery box provided by us, or in plastic ziplock bag. Prevent contact from Perfumes, Soaps, Water, Humidity, Moisture, Extreme temperature or anything acidic.', 'images/accessories-14.jpg', 'accessories', 1),
 (62, 'Sterling Silver Dare To Dazzle Earrings ', 99, 'Create a stellar impression by flaunting these stud earrings from Praavy. Fashioned in sterling silver, these earrings feature silver plating with an unique design. Pair these with a floral maxi dress and stilettos to finish off the ensemble.', 'images/accessories-15.jpg', 'accessories', 1),
 (63, 'Sterling Silver Rhomb Couple Band Adjustable Ring for Men & Women', 120, 'This Silver Zircon Curl Ring has been handcrafted with love, especially for YOU! With dazzling zircons nestled in a curled sterling silver frame, this ring emanates love and calm.', 'images/accessories-16.jpg', 'accessories', 1),
-(64, 'Sterling Silver Classic Couple Band Adjustable Ring for Men & Women ', 150, 'Store the jewellery in GIVA Jewellery box provided by us, or in plastic ziplock bag. Prevent contact from Perfumes, Soaps, Water, Humidity, Moisture, Extreme temperature or anything acidic.', 'images/accessories-17.jpg', 'accessories', 1);
+(64, 'Sterling Silver Classic Couple Band Adjustable Ring for Men & Women ', 150, 'Store the jewellery in GIVA Jewellery box provided by us, or in plastic ziplock bag. Prevent contact from Perfumes, Soaps, Water, Humidity, Moisture, Extreme temperature or anything acidic.', 'images/accessories-17.jpg', 'accessories', 1),
+(65, 'Matte Attack Transferproof Lipstick\r\n', 20, 'For red carpet ready, \'ooh là là’ lips, look no further than our SUGAR Matte Attack Transferproof Lipsticks that are now available in new highly pigmented bold and edgy shades to give your lips some love and a oomph factor with every swipe.\r\n\r\n', 'images/cosmetic-2.jpg', 'cosmetic', 1);
 
 --
 -- Indexes for dumped tables
@@ -155,6 +184,12 @@ INSERT INTO `product_detail` (`p_id`, `p_name`, `p_price`, `p_description`, `p_i
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`cart_id`);
 
 --
 -- Indexes for table `categories`
@@ -176,7 +211,13 @@ ALTER TABLE `product_detail`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `admin_id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `cart_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -188,7 +229,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `product_detail`
 --
 ALTER TABLE `product_detail`
-  MODIFY `p_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `p_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
